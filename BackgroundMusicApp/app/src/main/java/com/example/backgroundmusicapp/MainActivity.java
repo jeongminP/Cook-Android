@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Intent intent;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService(intent);
-                android.util.Log.i("서비스 테스트", "startService()");
+                Toast.makeText(getApplicationContext(), "startService()", Toast.LENGTH_SHORT).show();
+                onBackPressed();
             }
         });
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopService(intent);
-                android.util.Log.i("서비스 테스트", "stopService()");
+                Toast.makeText(getApplicationContext(), "stopService()", Toast.LENGTH_SHORT).show();
             }
         });
     }

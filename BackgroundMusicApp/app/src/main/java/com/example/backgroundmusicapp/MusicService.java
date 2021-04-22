@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.widget.Toast;
 
 public class MusicService extends Service {
     MediaPlayer mp;
@@ -16,13 +17,13 @@ public class MusicService extends Service {
 
     @Override
     public void onCreate() {
-        android.util.Log.i("서비스 테스트", "onCreate()");
+        Toast.makeText(getApplicationContext(), "onCreate()", Toast.LENGTH_SHORT).show();
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        android.util.Log.i("서비스 테스트", "onStartCommand()");
+        Toast.makeText(getApplicationContext(), "onStartCommand()", Toast.LENGTH_SHORT).show();
         mp = MediaPlayer.create(this, R.raw.kygofirestone);
         mp.setLooping(true);
         mp.start();
@@ -31,7 +32,7 @@ public class MusicService extends Service {
 
     @Override
     public void onDestroy() {
-        android.util.Log.i("서비스 테스트", "onDestroy()");
+        Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
         mp.stop();
         super.onDestroy();
     }
